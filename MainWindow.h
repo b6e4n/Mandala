@@ -16,8 +16,14 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+private slots:
+    void setSlices(int nb) {paintingWidget->setSlices(nb);}
+    void penColor();
+    void clear() {paintingWidget->clear();}
+
 private:
     Ui::MainWindow *ui;
+    PaintingWidget* paintingWidget;
 };
 
 #endif // MAINWINDOW_H

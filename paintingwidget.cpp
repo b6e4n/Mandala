@@ -2,6 +2,8 @@
 #include <QGridLayout>
 #include <QMouseEvent>
 PaintingWidget::PaintingWidget(QWidget * parent) : QWidget(parent) {
+    myPenColor = Qt::black;
+    slice = 4;
 }
 
 void PaintingWidget::paintEvent(QPaintEvent* event) {
@@ -48,8 +50,23 @@ void PaintingWidget::mouseReleaseEvent(QMouseEvent *event) {
 
 void PaintingWidget::drawLineTo(const QPoint &endPoint) {
     QPainter painter(&img);
-    painter.setPen(QPen(Qt::SolidLine));
-    painter.drawLine(lastPoint, endPoint);
+    painter.setPen(QPen(myPenColor));
+
+    for (int i=0; i<slice; i++) {
+        painter.drawLine(lastPoint, endPoint);
+        painter.translate(img.width()/2,img.height()/2);
+        painter.rotate(360/slice);
+        painter.translate(-img.width()/2,-img.height()/2);
+    }
     update();
     lastPoint = endPoint;
+}
+
+void PaintingWidget::setPenColor(const QColor &color) {
+    myPenColor = color;
+}
+
+void PaintingWidget::clear() {
+    img.fill(qRgb(255, 255, 255));
+    update();
 }
