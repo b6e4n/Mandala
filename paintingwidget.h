@@ -39,6 +39,8 @@ private:
     int slice;
     QColor myPenColor;
     int myPenWidth;
+    bool mirror;
+    bool colorGradient;
 };
 
 #endif // PAINTINGWIDGET_H
