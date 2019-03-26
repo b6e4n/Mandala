@@ -24,8 +24,10 @@ private slots:
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
-
     void on_horizontalSlider_3_actionTriggered(int action);
+
+
+    void on_checkBox_2_clicked(bool checked);
 
 private:
     Ui::MainWindow *ui;
