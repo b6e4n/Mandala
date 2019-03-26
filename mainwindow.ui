@@ -109,7 +109,7 @@
       <string>Clear</string>
      </property>
     </widget>
-    <widget class="QDoubleSpinBox" name="doubleSpinBox">
+    <widget class="QSpinBox" name="spinBox">
      <property name="geometry">
       <rect>
        <x>270</x>
@@ -176,6 +176,9 @@
        <width>160</width>
        <height>29</height>
       </rect>
+     </property>
+     <property name="maximum">
+      <number>100</number>
      </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>

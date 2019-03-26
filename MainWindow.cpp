@@ -52,14 +52,14 @@ void MainWindow::on_checkBox_2_clicked(bool checked)
     paintingWidget->setColorGradient(checked);
 }
 
-void MainWindow::on_doubleSpinBox_valueChanged(double arg1)
-{
-    ui->horizontalSlider->setValue(arg1);
-    paintingWidget->setSlices(arg1);
-
-}
 
 void MainWindow::on_horizontalSlider_actionTriggered(int action)
 {
     paintingWidget->setSlices(action);
+}
+
+void MainWindow::on_spinBox_valueChanged(int arg1)
+{
+    ui->horizontalSlider->setValue(arg1);
+    paintingWidget->setSlices(arg1);
 }
