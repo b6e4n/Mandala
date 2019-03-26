@@ -5,8 +5,8 @@ PaintingWidget::PaintingWidget(QWidget * parent) : QWidget(parent) {
     myPenColor = Qt::black;
     myPenWidth = 1;
     slice = 4;
-    mirror = true;
-    colorGradient = true;
+    mirror = false;
+    colorGradient = false;
 }
 
 void PaintingWidget::paintEvent(QPaintEvent* event) {
@@ -69,6 +69,19 @@ void PaintingWidget::drawLineTo(const QPoint &endPoint) {
         painter.translate(img.width()/2,img.height()/2);
         painter.rotate(360/slice);
         painter.translate(-img.width()/2,-img.height()/2);
+    }
+    if (mirror) {
+        int x1 = width()-lastPoint.x();
+        int x2 = width()-endPoint.x();
+        lastPoint.setX(x1);
+        QPoint endPoint2(endPoint);
+        endPoint2.setX(x2);
+        for (int i=0; i<slice+1; i++) {
+            painter.drawLine(lastPoint, endPoint2);
+            painter.translate(img.width()/2,img.height()/2);
+            painter.rotate(360/slice);
+            painter.translate(-img.width()/2,-img.height()/2);
+        }
     }
     update();
     lastPoint = endPoint;
