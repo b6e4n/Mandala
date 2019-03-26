@@ -44,3 +44,10 @@ void MainWindow::on_horizontalSlider_3_actionTriggered(int action)
 {
     paintingWidget->setPenWidth(action);
 }
+
+
+
+void MainWindow::on_checkBox_2_clicked(bool checked)
+{
+    paintingWidget->setColorGradient(checked);
+}
