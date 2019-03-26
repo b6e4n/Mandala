@@ -3,6 +3,7 @@
 #include <QMouseEvent>
 PaintingWidget::PaintingWidget(QWidget * parent) : QWidget(parent) {
     myPenColor = Qt::black;
+    myPenWidth = 1;
     slice = 4;
 }
 
@@ -50,9 +51,9 @@ void PaintingWidget::mouseReleaseEvent(QMouseEvent *event) {
 
 void PaintingWidget::drawLineTo(const QPoint &endPoint) {
     QPainter painter(&img);
-    painter.setPen(QPen(myPenColor));
+    painter.setPen(QPen(myPenColor, myPenWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
 
-    for (int i=0; i<slice; i++) {
+    for (int i=0; i<slice+1; i++) {
         painter.drawLine(lastPoint, endPoint);
         painter.translate(img.width()/2,img.height()/2);
         painter.rotate(360/slice);
@@ -60,10 +61,6 @@ void PaintingWidget::drawLineTo(const QPoint &endPoint) {
     }
     update();
     lastPoint = endPoint;
-}
-
-void PaintingWidget::setPenColor(const QColor &color) {
-    myPenColor = color;
 }
 
 void PaintingWidget::clear() {
