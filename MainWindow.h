@@ -21,6 +21,10 @@ private slots:
     void penColor();
     void clear() {paintingWidget->clear();}
 
+    void on_pushButton_clicked();
+
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     PaintingWidget* paintingWidget;
