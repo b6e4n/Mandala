@@ -39,3 +39,8 @@ void MainWindow::on_pushButton_2_clicked()
         paintingWidget->setPenColor(newColor);
     }
 }
+
+void MainWindow::on_horizontalSlider_3_actionTriggered(int action)
+{
+    paintingWidget->setPenWidth(action);
+}
