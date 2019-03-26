@@ -34,10 +34,12 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
+
     QColor newColor = QColorDialog::getColor(this->paintingWidget->penColor());
     if (newColor.isValid()) {
         paintingWidget->setPenColor(newColor);
     }
+    ui->pushButton_2->setStyleSheet(QString::fromUtf8("background-color:rgb(255,255,0"));
 }
 
 void MainWindow::on_horizontalSlider_3_actionTriggered(int action)
