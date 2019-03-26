@@ -19,6 +19,7 @@ SOURCES += main.cpp\
 HEADERS  += MainWindow.h \
     paintingwidget.h
 
-FORMS    += MainWindow.ui
+FORMS    += \
+    mainwindow.ui
 
 CONFIG += c++11

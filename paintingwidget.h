@@ -4,7 +4,6 @@
 #include <QWidget>
 #include <QPainter>
 #include <QImage>
-#include "renderarea.h"
 
 #include <QCheckBox>
 #include <QComboBox>
@@ -25,12 +24,21 @@ public:
     void drawLineTo(const QPoint &endPoint);
     void resizeEvent(QResizeEvent *event);
     void resizeImage(QImage *img, const QSize &newSize);
+    void setPenColor(const QColor &newColor) {myPenColor = newColor;};
+    void setPenWidth(const int &newPenWidth) {myPenWidth = newPenWidth;};
+    QColor penColor() { return myPenColor; }
+    void setSlices(int nb) {slice = nb;}
+    void clear();
 
-private slots:
+
+
 private:
     QImage img;
     bool drawing;
     QPoint lastPoint;
+    int slice;
+    QColor myPenColor;
+    int myPenWidth;
 };
 
 #endif // PAINTINGWIDGET_H
