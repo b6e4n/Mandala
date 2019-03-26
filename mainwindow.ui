@@ -48,6 +48,9 @@
        <height>29</height>
       </rect>
      </property>
+     <property name="acceptDrops">
+      <bool>false</bool>
+     </property>
      <property name="maximum">
       <number>20</number>
      </property>
@@ -57,15 +60,17 @@
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
-    </widget>
-    <widget class="QDoubleSpinBox" name="doubleSpinBox">
-     <property name="geometry">
-      <rect>
-       <x>270</x>
-       <y>50</y>
-       <width>69</width>
-       <height>27</height>
-      </rect>
+     <property name="invertedAppearance">
+      <bool>false</bool>
+     </property>
+     <property name="invertedControls">
+      <bool>false</bool>
+     </property>
+     <property name="tickPosition">
+      <enum>QSlider::TicksBelow</enum>
+     </property>
+     <property name="tickInterval">
+      <number>0</number>
      </property>
     </widget>
     <widget class="QFontComboBox" name="fontComboBox">
@@ -102,6 +107,16 @@
      </property>
      <property name="text">
       <string>Clear</string>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="doubleSpinBox">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>50</y>
+       <width>69</width>
+       <height>27</height>
+      </rect>
      </property>
     </widget>
    </widget>

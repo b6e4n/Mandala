@@ -29,6 +29,10 @@ private slots:
 
     void on_checkBox_2_clicked(bool checked);
 
+    void on_doubleSpinBox_valueChanged(double arg1);
+
+    void on_horizontalSlider_actionTriggered(int action);
+
 private:
     Ui::MainWindow *ui;
     PaintingWidget* paintingWidget;
