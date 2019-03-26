@@ -24,8 +24,9 @@ public:
     void drawLineTo(const QPoint &endPoint);
     void resizeEvent(QResizeEvent *event);
     void resizeImage(QImage *img, const QSize &newSize);
-    void setPenColor(const QColor &newColor) {myPenColor = newColor;};
-    void setPenWidth(const int &newPenWidth) {myPenWidth = newPenWidth;};
+    void setPenColor(const QColor &newColor) {myPenColor = newColor;}
+    void setPenWidth(const int &newPenWidth) {myPenWidth = newPenWidth;}
+    void setColorGradient(const bool &b) {colorGradient = b;}
     QColor penColor() { return myPenColor; }
     void setSlices(int nb) {slice = nb;}
     void clear();
