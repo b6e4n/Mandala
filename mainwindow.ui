@@ -73,33 +73,10 @@
       <number>0</number>
      </property>
     </widget>
-    <widget class="QFontComboBox" name="fontComboBox">
-     <property name="geometry">
-      <rect>
-       <x>450</x>
-       <y>50</y>
-       <width>191</width>
-       <height>27</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="radioButton">
-     <property name="geometry">
-      <rect>
-       <x>360</x>
-       <y>50</y>
-       <width>81</width>
-       <height>22</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Mirror</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="pushButton">
      <property name="geometry">
       <rect>
-       <x>680</x>
+       <x>370</x>
        <y>50</y>
        <width>99</width>
        <height>27</height>
@@ -112,7 +89,7 @@
     <widget class="QSpinBox" name="spinBox">
      <property name="geometry">
       <rect>
-       <x>270</x>
+       <x>240</x>
        <y>50</y>
        <width>69</width>
        <height>27</height>
@@ -148,7 +125,7 @@
      <rect>
       <x>0</x>
       <y>580</y>
-      <width>541</width>
+      <width>621</width>
       <height>61</height>
      </rect>
     </property>
@@ -210,6 +187,19 @@
       <string>Multicolor</string>
      </property>
     </widget>
+    <widget class="QCheckBox" name="checkBox_3">
+     <property name="geometry">
+      <rect>
+       <x>510</x>
+       <y>20</y>
+       <width>161</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Mirror</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
@@ -218,7 +208,7 @@
      <x>0</x>
      <y>0</y>
      <width>1172</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

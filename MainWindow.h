@@ -34,6 +34,8 @@ private slots:
 
     void on_spinBox_valueChanged(int arg1);
 
+    void on_checkBox_3_clicked(bool checked);
+
 private:
     Ui::MainWindow *ui;
     PaintingWidget* paintingWidget;

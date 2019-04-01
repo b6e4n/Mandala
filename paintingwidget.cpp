@@ -60,7 +60,7 @@ void PaintingWidget::drawLineTo(const QPoint &endPoint) {
     int l = myPenColor.lightness();
     int a = myPenColor.alpha();
     QColor tmp(myPenColor);
-    for (int i=0; i<slice+1; i++) {
+    for (int i=0; i<slice; i++) {
         if (colorGradient) {
             tmp.setHsl((h+i*360/slice)%360,s,l,a);
             painter.setPen(QPen(tmp, myPenWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
@@ -76,10 +76,17 @@ void PaintingWidget::drawLineTo(const QPoint &endPoint) {
         lastPoint.setX(x1);
         QPoint endPoint2(endPoint);
         endPoint2.setX(x2);
-        for (int i=0; i<slice+1; i++) {
+        painter.translate(img.width()/2,img.height()/2);
+        painter.rotate(-360*((int)((slice+1)/4))/slice);
+        painter.translate(-img.width()/2,-img.height()/2);
+        for (int i=0; i<slice; i++) {
+            if (colorGradient) {
+                tmp.setHsl((h+i*360/slice)%360,s,l,a);
+                painter.setPen(QPen(tmp, myPenWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+            }
             painter.drawLine(lastPoint, endPoint2);
             painter.translate(img.width()/2,img.height()/2);
-            painter.rotate(360/slice);
+            painter.rotate(+360/slice);
             painter.translate(-img.width()/2,-img.height()/2);
         }
     }

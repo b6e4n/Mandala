@@ -27,6 +27,7 @@ public:
     void setPenColor(const QColor &newColor) {myPenColor = newColor;}
     void setPenWidth(const int &newPenWidth) {myPenWidth = newPenWidth;}
     void setColorGradient(const bool &b) {colorGradient = b;}
+    void setMirror(const bool &b) {mirror = b;}
     QColor penColor() { return myPenColor; }
     void setSlices(int nb) {slice = nb;}
     void clear();
