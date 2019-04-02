@@ -36,6 +36,8 @@ private slots:
 
     void on_checkBoxMirror_clicked(bool checked);
 
+    void on_actionAbout_triggered();
+
 private:
     Ui::MainWindow *ui;
     PaintingWidget* paintingWidget;

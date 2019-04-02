@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 #include "ui_mainwindow.h"
 #include <QColorDialog>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -55,7 +56,7 @@ void MainWindow::on_pushButtonColor_clicked()
     if (newColor.isValid()) {
         paintingWidget->setPenColor(newColor);
     }
-    ui->pushButtonColor->setStyleSheet(QString::fromUtf8("background-color:rgb(255,255,0"));
+    ui->pushButtonColor->setStyleSheet("background-color:"+newColor.name());
 }
 
 void MainWindow::on_checkBoxMulticolor_clicked(bool checked)
@@ -66,4 +67,10 @@ void MainWindow::on_checkBoxMulticolor_clicked(bool checked)
 void MainWindow::on_checkBoxMirror_clicked(bool checked)
 {
     paintingWidget->setMirror(checked);
+}
+
+void MainWindow::on_actionAbout_triggered()
+{
+    QMessageBox *info=new QMessageBox();
+    info->information(this,tr("About this Mandala"),tr("This is the newest Mandala created and designed by Clément Labonne and Benjamin Nogué"));
 }
