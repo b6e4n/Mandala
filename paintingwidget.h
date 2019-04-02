@@ -10,6 +10,7 @@
 #include <QLabel>
 #include <QSpinBox>
 #include <QSpinBox>
+#include <QVector>
 
 class RenderArea;
 
@@ -31,6 +32,9 @@ public:
     QColor penColor() { return myPenColor; }
     void setSlices(int nb) {slice = nb;}
     void clear();
+    void undo();
+    void save_picture();
+    void redo();
 
 
 
@@ -43,6 +47,8 @@ private:
     int myPenWidth;
     bool mirror;
     bool colorGradient;
+    QVector<QImage> stack;
+    int index;
 };
 
 #endif // PAINTINGWIDGET_H

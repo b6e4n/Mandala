@@ -1,6 +1,10 @@
 #include "paintingwidget.h"
 #include <QGridLayout>
 #include <QMouseEvent>
+#include <QInputDialog>
+#include <QDebug>
+
+
 PaintingWidget::PaintingWidget(QWidget * parent) : QWidget(parent) {
     myPenColor = Qt::black;
     myPenWidth = 1;
@@ -12,6 +16,7 @@ PaintingWidget::PaintingWidget(QWidget * parent) : QWidget(parent) {
 void PaintingWidget::paintEvent(QPaintEvent* event) {
     QPainter painter(this);
     painter.drawImage(0,0, img);
+
 }
 
 void PaintingWidget::resizeEvent(QResizeEvent *event) {
@@ -20,7 +25,9 @@ void PaintingWidget::resizeEvent(QResizeEvent *event) {
         int newHeight = qMax(height(), img.height());
         resizeImage(&img, QSize(newWidth, newHeight));
         update();
+
     }
+
     QWidget::resizeEvent(event);
 }
 
@@ -33,9 +40,11 @@ void PaintingWidget::resizeImage(QImage *img, const QSize &newSize) {
     QPainter painter(&newImg);
     painter.drawImage(QPoint(0, 0), *img);
     *img = newImg;
+
 }
 
 void PaintingWidget::mousePressEvent(QMouseEvent *event) {
+
         lastPoint = event->pos();
         drawing = true;
 }
@@ -43,12 +52,17 @@ void PaintingWidget::mousePressEvent(QMouseEvent *event) {
 void PaintingWidget::mouseMoveEvent(QMouseEvent *event) {
     if (drawing) {
         drawLineTo(event->pos());
+
+
     }
 }
 
 void PaintingWidget::mouseReleaseEvent(QMouseEvent *event) {
         drawLineTo(event->pos());
         drawing = false;
+        stack.push_back(img);
+        index=stack.size();
+
 }
 
 void PaintingWidget::drawLineTo(const QPoint &endPoint) {
@@ -90,11 +104,46 @@ void PaintingWidget::drawLineTo(const QPoint &endPoint) {
             painter.translate(-img.width()/2,-img.height()/2);
         }
     }
+
     update();
+
     lastPoint = endPoint;
+
 }
 
 void PaintingWidget::clear() {
     img.fill(qRgb(255, 255, 255));
     update();
+}
+
+void PaintingWidget::undo(){
+
+    if(index<=0){
+        this->clear();
+        stack.clear();
+        stack.push_back(img);
+        index=1;
+
+    } else{
+        index=index-1;
+        img=stack[index];
+        update();
+    }
+}
+
+void PaintingWidget::redo(){
+    if(index<stack.size()){
+        img=stack[index];
+        update();
+        index++;
+    } else{
+        img=stack.last();
+        update();
+    }
+}
+
+void PaintingWidget::save_picture(){
+    QString name=QInputDialog::getText(this,"Save File","Nommez votre image");
+
+    img.save("./Images/"+name,"png");
 }

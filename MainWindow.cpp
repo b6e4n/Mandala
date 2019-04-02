@@ -74,3 +74,19 @@ void MainWindow::on_actionAbout_triggered()
     QMessageBox *info=new QMessageBox();
     info->information(this,tr("About this Mandala"),tr("This is the newest Mandala created and designed by Clément Labonne and Benjamin Nogué"));
 }
+
+void MainWindow::on_pushButtonUndo_clicked()
+{
+    paintingWidget->undo();
+}
+
+
+void MainWindow::on_actionSave_2_triggered()
+{
+    paintingWidget->save_picture();
+}
+
+void MainWindow::on_pushButtonRedo_clicked()
+{
+    paintingWidget->redo();
+}

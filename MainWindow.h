@@ -38,6 +38,12 @@ private slots:
 
     void on_actionAbout_triggered();
 
+    void on_pushButtonUndo_clicked();
+
+    void on_actionSave_2_triggered();
+
+    void on_pushButtonRedo_clicked();
+
 private:
     Ui::MainWindow *ui;
     PaintingWidget* paintingWidget;
