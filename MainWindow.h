@@ -21,20 +21,20 @@ private slots:
     void penColor();
     void clear() {paintingWidget->clear();}
 
-    void on_pushButton_clicked();
 
-    void on_pushButton_2_clicked();
-    void on_horizontalSlider_3_actionTriggered(int action);
+    void on_slicesSlider_actionTriggered(int action);
 
+    void on_spinBoxSlices_valueChanged(int arg1);
 
-    void on_checkBox_2_clicked(bool checked);
+    void on_pushButtonClear_clicked();
 
+    void on_horizontalSliderWidth_actionTriggered(int action);
 
-    void on_horizontalSlider_actionTriggered(int action);
+    void on_pushButtonColor_clicked();
 
-    void on_spinBox_valueChanged(int arg1);
+    void on_checkBoxMulticolor_clicked(bool checked);
 
-    void on_checkBox_3_clicked(bool checked);
+    void on_checkBoxMirror_clicked(bool checked);
 
 private:
     Ui::MainWindow *ui;

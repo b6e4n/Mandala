@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     paintingWidget = ui->paintingWidget;
     connect(ui->actionColor, SIGNAL(triggered()), this, SLOT(penColor()));
     connect(ui->actionClear, SIGNAL(triggered()), this, SLOT(clear()));
-    connect(ui->horizontalSlider, SIGNAL(sliderMoved(int)),this, SLOT(setSlices(int)));
+    connect(ui->slicesSlider, SIGNAL(sliderMoved(int)),this, SLOT(setSlices(int)));
 
 }
 
@@ -27,38 +27,43 @@ void MainWindow::penColor() {
 }
 
 
-void MainWindow::on_pushButton_clicked() {
+
+void MainWindow::on_slicesSlider_actionTriggered(int action)
+{
+    paintingWidget->setSlices(action);
+}
+
+void MainWindow::on_spinBoxSlices_valueChanged(int arg1)
+{
+    ui->slicesSlider->setValue(arg1);
+    paintingWidget->setSlices(arg1);
+}
+
+void MainWindow::on_pushButtonClear_clicked()
+{
     paintingWidget->clear();
 }
 
-void MainWindow::on_pushButton_2_clicked() {
+void MainWindow::on_horizontalSliderWidth_actionTriggered(int action)
+{
+    paintingWidget->setPenWidth(action);
+}
+
+void MainWindow::on_pushButtonColor_clicked()
+{
     QColor newColor = QColorDialog::getColor(this->paintingWidget->penColor());
     if (newColor.isValid()) {
         paintingWidget->setPenColor(newColor);
     }
-    ui->pushButton_2->setStyleSheet(QString::fromUtf8("background-color:rgb(255,255,0"));
+    ui->pushButtonColor->setStyleSheet(QString::fromUtf8("background-color:rgb(255,255,0"));
 }
 
-void MainWindow::on_horizontalSlider_3_actionTriggered(int action) {
-    paintingWidget->setPenWidth(action);
-}
-
-
-
-void MainWindow::on_checkBox_2_clicked(bool checked) {
+void MainWindow::on_checkBoxMulticolor_clicked(bool checked)
+{
     paintingWidget->setColorGradient(checked);
 }
 
-
-void MainWindow::on_horizontalSlider_actionTriggered(int action) {
-    paintingWidget->setSlices(action);
-}
-
-void MainWindow::on_spinBox_valueChanged(int arg1) {
-    ui->horizontalSlider->setValue(arg1);
-    paintingWidget->setSlices(arg1);
-}
-
-void MainWindow::on_checkBox_3_clicked(bool checked) {
+void MainWindow::on_checkBoxMirror_clicked(bool checked)
+{
     paintingWidget->setMirror(checked);
 }
