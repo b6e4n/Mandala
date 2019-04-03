@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionColor, SIGNAL(triggered()), this, SLOT(penColor()));
     connect(ui->actionClear, SIGNAL(triggered()), this, SLOT(clear()));
     connect(ui->slicesSlider, SIGNAL(sliderMoved(int)),this, SLOT(setSlices(int)));
+    connect(ui->horizontalSliderWidth, SIGNAL(valueChanged(int)), this, SLOT(setPenWidth(int)));
 
 }
 
@@ -28,12 +29,6 @@ void MainWindow::penColor() {
 }
 
 
-
-void MainWindow::on_slicesSlider_actionTriggered(int action)
-{
-    paintingWidget->setSlices(action);
-}
-
 void MainWindow::on_spinBoxSlices_valueChanged(int arg1)
 {
     ui->slicesSlider->setValue(arg1);
@@ -45,10 +40,6 @@ void MainWindow::on_pushButtonClear_clicked()
     paintingWidget->clear();
 }
 
-void MainWindow::on_horizontalSliderWidth_actionTriggered(int action)
-{
-    paintingWidget->setPenWidth(action);
-}
 
 void MainWindow::on_pushButtonColor_clicked()
 {
@@ -89,4 +80,20 @@ void MainWindow::on_actionSave_2_triggered()
 void MainWindow::on_pushButtonRedo_clicked()
 {
     paintingWidget->redo();
+}
+
+void MainWindow::on_actionUndo_triggered()
+{
+    paintingWidget->undo();
+}
+
+void MainWindow::on_actionRedo_triggered()
+{
+    paintingWidget->redo();
+}
+
+void MainWindow::on_slicesSlider_sliderMoved(int position)
+{
+    ui->spinBoxSlices->setValue(position);
+    paintingWidget->setSlices(position);
 }

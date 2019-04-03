@@ -17,7 +17,7 @@ class RenderArea;
 class PaintingWidget : public QWidget {
 
 public:
-    PaintingWidget(QWidget * parent);
+    explicit PaintingWidget(QWidget * parent=0);
     void paintEvent(QPaintEvent*);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
@@ -26,7 +26,7 @@ public:
     void resizeEvent(QResizeEvent *event);
     void resizeImage(QImage *img, const QSize &newSize);
     void setPenColor(const QColor &newColor) {myPenColor = newColor;}
-    void setPenWidth(const int &newPenWidth) {myPenWidth = newPenWidth;}
+
     void setColorGradient(const bool &b) {colorGradient = b;}
     void setMirror(const bool &b) {mirror = b;}
     QColor penColor() { return myPenColor; }
@@ -36,6 +36,7 @@ public:
     void save_picture();
     void redo();
 
+    void setPenWidth(int newPenWidth) {myPenWidth = newPenWidth;}
 
 
 private:

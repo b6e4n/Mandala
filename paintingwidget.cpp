@@ -3,11 +3,11 @@
 #include <QMouseEvent>
 #include <QInputDialog>
 #include <QDebug>
-
+#include <iostream>
 
 PaintingWidget::PaintingWidget(QWidget * parent) : QWidget(parent) {
-    myPenColor = Qt::black;
-    myPenWidth = 1;
+    myPenColor = Qt::blue;
+    myPenWidth = 4;
     slice = 4;
     mirror = false;
     colorGradient = false;
@@ -115,6 +115,7 @@ void PaintingWidget::clear() {
     img.fill(qRgb(255, 255, 255));
     update();
 }
+
 
 void PaintingWidget::undo(){
 

@@ -20,15 +20,12 @@ private slots:
     void setSlices(int nb) {paintingWidget->setSlices(nb);}
     void penColor();
     void clear() {paintingWidget->clear();}
+    void setPenWidth(int newPenWidth) {paintingWidget->setPenWidth(newPenWidth);}
 
-
-    void on_slicesSlider_actionTriggered(int action);
 
     void on_spinBoxSlices_valueChanged(int arg1);
 
     void on_pushButtonClear_clicked();
-
-    void on_horizontalSliderWidth_actionTriggered(int action);
 
     void on_pushButtonColor_clicked();
 
@@ -43,6 +40,12 @@ private slots:
     void on_actionSave_2_triggered();
 
     void on_pushButtonRedo_clicked();
+
+    void on_actionUndo_triggered();
+
+    void on_actionRedo_triggered();
+
+    void on_slicesSlider_sliderMoved(int position);
 
 private:
     Ui::MainWindow *ui;
